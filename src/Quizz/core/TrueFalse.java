@@ -1,6 +1,6 @@
 package Quizz.core;
 
-public class TrueFalse extends Question {
+public class TrueFalse extends OptionQuestion {
 
     public TrueFalse(String aQuestion, boolean answer) {
         super(aQuestion, getAnswers(answer));

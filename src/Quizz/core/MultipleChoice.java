@@ -1,6 +1,6 @@
 package Quizz.core;
 
-public class MultipleChoice extends Question {
+public class MultipleChoice extends OptionQuestion {
 
     public MultipleChoice(String aQuestion, Answer[] anAnswers) {
         super(aQuestion, anAnswers);

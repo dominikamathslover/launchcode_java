@@ -3,7 +3,7 @@ package Quizz.core;
 import java.util.HashSet;
 import java.util.List;
 
-public class Checkbox extends Question {
+public class Checkbox extends OptionQuestion {
     private int countCorrect;
 
     public Checkbox(String aQuestion, Answer[] anAnswers) {
