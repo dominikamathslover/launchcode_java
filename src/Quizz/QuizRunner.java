@@ -10,17 +10,17 @@ public class QuizRunner {
 
         System.out.println( Arrays.toString(new String[]{"30", "40", "50"}));
 
-        Question question1 = new TrueFalse("Is Poland in Europe?", true);
-        Question question2 = new Checkbox("Name the European countries", new Answer[]{new Answer("Belgium", true), new Answer("Bulgaria", true), new Answer("Bangladesh", false), new Answer("Germany", true)});
-        Question question3 = new MultipleChoice("Name capital of Austria", new Answer[]{new Answer("Vienna", true), new Answer("Oslo", false), new Answer("Bucharest", false), new Answer("Bern", false)});
-        Question question4 = new IntAnswerQuestion("How many countries are there in EU?", 27);
-        Question question5 = new ArrayAnswerQuestion("Cheops pyramid dimensions", new String[]{"30", "40", "50"});
+        Question<?> question1 = new TrueFalse("Is Poland in Europe?", true);
+        Question<?> question2 = new Checkbox("Name the European countries", new Answer[]{new Answer("Belgium", true), new Answer("Bulgaria", true), new Answer("Bangladesh", false), new Answer("Germany", true)});
+        Question<?> question3 = new MultipleChoice("Name capital of Austria", new Answer[]{new Answer("Vienna", true), new Answer("Oslo", false), new Answer("Bucharest", false), new Answer("Bern", false)});
+        Question<?> question4 = new IntAnswerQuestion("How many countries are there in EU?", 27);
+        Question<?> question5 = new ArrayAnswerQuestion("Cheops pyramid dimensions", new String[]{"30", "40", "50"});
 
         Quiz quiz = new Quiz(new Question[]{question1, question2, question3, question4, question5});
         Scanner scanner = new Scanner(System.in);
 
 
-        for (Question question : quiz.getQuestions()) {
+        for (Question<?> question : quiz.getQuestions()) {
             System.out.println(question.getQuestion());
 
             if (question instanceof OptionQuestion) {

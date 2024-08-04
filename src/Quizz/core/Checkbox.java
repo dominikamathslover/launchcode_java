@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Checkbox extends OptionQuestion {
-    private int countCorrect;
+    private static final String COMMA_SEPARATOR = ",";
 
     public Checkbox(String aQuestion, Answer[] anAnswers) {
         super(aQuestion, anAnswers);
@@ -21,14 +21,11 @@ public class Checkbox extends OptionQuestion {
         if (aCountCorrect == 0) {
             throw new IllegalArgumentException("Answer configuration incorrect.");
         }
-        countCorrect = aCountCorrect;
     }
 
     @Override
     public boolean checkUserAnswer(String userAnswer) {
-        // EXAMPLE: Berlin,Vienna,Prague,Lublin,Kiev,Bad Homburg
-
-        HashSet<String> answerHashSet = new HashSet<String>(List.of(userAnswer.split(",")));
+        HashSet<String> answerHashSet = new HashSet<>(List.of(userAnswer.split(COMMA_SEPARATOR)));
         boolean isOkay = true;
 
         if (answerHashSet.isEmpty())
@@ -44,7 +41,6 @@ public class Checkbox extends OptionQuestion {
 
         return isOkay;
     }
-
 
 
 }
