@@ -1,29 +1,17 @@
 package Quizz.core;
 
-public class TrueFalse extends OptionQuestion {
+public class TrueFalse extends SingleAnswerQuestion<Boolean> {
 
     public TrueFalse(String aQuestion, boolean answer) {
-        super(aQuestion, getAnswers(answer));
-    }
-
-    private static Answer[] getAnswers(boolean answer) {
-        Answer answerYes = new Answer("YES", answer);
-        Answer answerNo = new Answer("NO", !answer);
-
-        return new Answer[]{answerYes, answerNo};
-    }
-
-    @Override
-    protected void validate() {
-        // do nothing for this subtype
+        super(aQuestion, answer);
     }
 
     @Override
     public boolean checkUserAnswer(String userAnswer) {
         userAnswer = userAnswer.toUpperCase();
         return switch (userAnswer) {
-            case "YES" -> answers[0].isCorrect();
-            case "NO" -> answers[1].isCorrect();
+            case "YES" -> answer;
+            case "NO" -> !answer;
             default -> throw new IllegalArgumentException("Answer invalid");
         };
     }
