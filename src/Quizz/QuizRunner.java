@@ -1,15 +1,30 @@
 package Quizz;
 
+import Quizz.core.*;
+
+import java.util.Scanner;
+
 public class QuizRunner {
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
-        TrueFalse question1 = new TrueFalse("Is Poland in europe?",true);
-        Checkbox question2 = new Checkbox("Name the European countries", new String[]{"Belgium", "Bulgaria", "Germany"}, new String[]{"Bangladesh"});
-        MultipleChoice question3 = new MultipleChoice("Name capital of Austria","Vienna",new String[]{"Oslo","Bucharest","Bern"} );
+        TrueFalse question1 = new TrueFalse("Is Poland in Europe?", true);
+        Checkbox question2 = new Checkbox("Name the European countries", new Answer[]{new Answer("Belgium", true), new Answer("Bulgaria", true), new Answer("Bangladesh", false), new Answer("Germany", true)});
+        MultipleChoice question3 = new MultipleChoice("Name capital of Austria", new Answer[]{new Answer("Vienna", true), new Answer("Oslo", false), new Answer("Bucharest", false), new Answer("Bern", false)});
 
-        question1.getQuestion();
-        question2.getQuestion();
-        question3.getQuestion();
+        Quiz quiz = new Quiz(new Question[]{question1, question2, question3});
+        Scanner scanner = new Scanner(System.in);
+
+
+        for (Question question: quiz.getQuestions()){
+            System.out.println(question.getQuestion());
+            for(Answer answer: question.getAnswers()) {
+                System.out.println(answer.getLabel());
+            }
+            System.out.println(question.checkUserAnswer(scanner.nextLine()));
+        }
+
+
+
 
         /* Wyświetlić odpowiedzi w losowej kolejności
         Scannerem pobrać odpowiedzi od użytkownika
@@ -35,16 +50,25 @@ public class QuizRunner {
         Linear scale: a question that allows
         the user to provide a numeric response within
         an integer scale, which may vary from question
-        to question. For instance, it could be 1-3 for
+        to question.
+        For instance, it could be 1-3 for
         one linear scale question and 1-5 for another.
         Paragraph: Similar to short answer but allows
         for responses of up to 500 characters.
         Add tests with JUnit to your classes.
+
+
+         if (shuffle) {
+            List<Answer> list = Arrays.stream(answers).toList();
+            Collections.shuffle(list);
+            return (Answer[])list.toArray();
+        } else
          */
+
+
+
+
     }
-
-
-
 
 
 }

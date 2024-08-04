@@ -2,7 +2,7 @@ package technology;
 
 public class Laptop extends AbstractEntity {
     private BrandPC brand;
-    private float size= 15.7f;
+    private float size= 15.6f;
     private float price;
 
 
