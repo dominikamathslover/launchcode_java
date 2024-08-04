@@ -1,0 +1,3 @@
+package technology;
+
+public enum BrandPhone {SAMSUNGGALAXY, APPLEIPHONE, XIAOMI, ONEPLUS, REALME, MOTOROLAEDGE, POCO, OPPO}
