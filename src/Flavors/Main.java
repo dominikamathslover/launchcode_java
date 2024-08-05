@@ -7,6 +7,8 @@ public class Main {
         Case menu = new Case();
         ArrayList<Flavor> flavors = menu.getFlavors();
         ArrayList<Cone> cones = menu.getCones();
+        ArrayList<Toppings> toppings = menu.getToppings();
+
 
         System.out.println("\n Before: ");
         for(Flavor flavor: flavors){
@@ -36,12 +38,34 @@ public class Main {
         }
 
 
-        // TODO: Use a Comparator class to sort the 'flavors' array alphabetically by the 'name'
-        //  field.
+        System.out.println("\n Before: ");
+        for(Flavor flavor: flavors){
+            System.out.println(flavor.getName()+"- number of allergens: "+flavor.getAllergens().size());
+        }
 
-        // TODO: Use a Comparator class to sort the 'cones' array in increasing order by the 'cost'
-        //  field.
+        flavors.sort(new FlavorComparatorNumberOfIng());
 
-        // TODO: Print the 'flavors' and 'cones' lists (in a clear manner) to verify the sorting.
+        System.out.println("\n After: ");
+        for(Flavor flavor: flavors){
+            System.out.println(flavor.getName()+"- number of allergens: "+flavor.getAllergens().size());
+        }
+
+        System.out.println("\n Before: ");
+        for(Toppings topping: toppings){
+            System.out.println(topping.getName()+" "+topping.getCost());
+        }
+
+        toppings.sort(new ToppingsComparator());
+
+        System.out.println("\n After: ");
+        for(Toppings topping: toppings){
+            System.out.println(topping.getName()+" "+topping.getCost());
+        }
+
+
+
+
+
+
     }
 }
